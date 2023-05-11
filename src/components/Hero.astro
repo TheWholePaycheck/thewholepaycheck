@@ -1,15 +1,24 @@
 <section>
     <h1 class="primary-font">
-      We are a cross functional team of developers & designers helping brands
-      create unique experiences.
+        We are a cross functional team of developers & designers helping brands
+        create unique experiences.
     </h1>
 
-    <button>SEE WORKS</button>
+    <div class="cta">
+        <button class="secondary-font" title="see our work!">See Works</button>
+        <button class="secondary-font" title="hit us up">Contact Us</button>
+    </div>
 </section>
 
 
-<style>
+<style lang="scss">
+    $accent-color: #e75314;
+
     section {
+        background-image: url('https://dr.savee-cdn.com/things/6/4/57f5ce8f9b15551ee64e59.webp');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
         padding: 10px;
         width: 100vw;
         height: 100vh;
@@ -17,16 +26,35 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        gap: 50px;
     }
 
 	h1 {
         text-transform: uppercase;
-		color: white;
-        font-size: 5vw;
+        font-size: 4vw;
+        color: white;
+        text-align: center;
     }
 
-    button {
-        padding: 4px;
-        
+    .cta {
+        display: flex;
+        gap: 20px;
+
+        button {
+            padding: 10px;
+            background-color: transparent;
+            border: solid 2px white;
+            color: white;
+            font-weight: 600;
+            text-transform: uppercase;
+            cursor: pointer;
+
+            &:hover {
+                border: solid 2px $accent-color;
+
+                background-color: $accent-color;
+                color: white;
+            }
+        }
     }
 </style>
