@@ -2,19 +2,19 @@
 ---
 
 <nav>
-    <a href="/">
+    <a href="/" draggable="false">
         <svg class="logo" width="100px" xmlns="http://www.w3.org/2000/svg" fill="#fff" data-name="Layer 1" viewBox="0 0 1080 1080"><path d="m283.82 560.02 77.55 258.38c2.87 9.57 15.03 12.45 21.89 5.17L581.65 613c1.06-1.13.51-2.99-1-3.35l-281.02-66.4c-9.97-2.36-18.75 6.96-15.8 16.77ZM558.62 796.66 817 719.11c10.28-3.09 13.37-16.15 5.55-23.51L613.81 498.93c-1.41-1.33-3.72-.63-4.17 1.25l-66.59 281.81c-2.18 9.25 6.46 17.39 15.56 14.66ZM796.48 520.13l-77.55-258.38c-2.92-9.73-15.27-12.65-22.24-5.25L499.84 465.44c-1.64 1.74-.78 4.6 1.55 5.15l279.54 66.05c9.81 2.32 18.45-6.85 15.56-16.51ZM521.23 283.25 262.85 360.8c-10.13 3.04-13.17 15.9-5.47 23.16l208.48 196.42c1.64 1.55 4.34.74 4.86-1.46l66.34-280.75c2.22-9.4-6.57-17.69-15.83-14.91Z" data-name="&amp;lt;Radial Repeat&amp;gt;"/></svg>
     </a>
 
     <div class="menu">
-        <a class="secondary-font" href="/about">Team</a>
-        <a class="secondary-font" href="/services">Services</a>
-        <a class="secondary-font" href="/works">Works</a>
-        <a class="secondary-font" href="/contact">Contact</a>
+        <a class="secondary-font" href="/about" draggable="false">Team</a>
+        <a class="secondary-font" href="/services" draggable="false">Services</a>
+        <a class="secondary-font" href="/works" draggable="false">Works</a>
+        <a class="secondary-font" href="/contact" draggable="false">Contact</a>
+    </div>
 
-        <div class="mobile-menu-button">
-            &Congruent;
-        </div>
+    <div class="mobile-menu-button">
+        &Congruent;
     </div>
 </nav>
 
@@ -22,6 +22,7 @@
     $accent-color: #e75314;
 
     nav {
+        user-select: none;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -31,13 +32,23 @@
         left: 0;
         width: 100%;
 
+
+        .mobile-menu-button {
+                position: fixed;
+                top: 0;
+                right: 20px;
+                font-size: 80px;
+                font-weight: bold;
+                color: white;
+            }
+
         a {
             text-decoration: none;
             color: white;
         }
 
         .logo {
-            transition: 150ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
         .logo:hover {
@@ -48,16 +59,6 @@
             display: flex;
             gap: 20px;
             text-transform: capitalize;
-
-            .mobile-menu-button {
-                position: fixed;
-                top: 0;
-                right: 20px;
-                font-size: 80px;
-                font-weight: bold;
-                display: none;
-                color: white;
-            }
 
             a:hover {
                 color: $accent-color;
@@ -72,10 +73,11 @@
             & .logo {
                 position: absolute;
             }
+            transition: 150ms cubic-bezier(0.86,0,0.07,1);
             position: fixed;
             top: 0;
             left: 0;
-            // transform: translateX(100vw);
+            transform: translateX(100vw);
             width: 100vw;
             height: 100vh;
             background-color: $accent-color;
@@ -94,21 +96,20 @@
             }
         }
 
-        .menu.toggle {}
+        .menu.active {
+            transform: translateX(0vw);
+        }
     }
 
 </style>
 
 <script>
 let menuButton = document.querySelector(".mobile-menu-button")
-let menuAnimation = gsap.to(".mobile-menu-button", {
-  paused: true,
-  x: 10000
-});
+let menu = document.querySelector(".menu")
 
-// ON MOUSE ENTER, PLAY THE ANIMATION
-menuButton.addEventListener("click", () => spinAnimation.play());
 
+// TOGGLE THE MENU WHEN THE BUTTON IS CLICKED
+menuButton.addEventListener("click", () => menu.classList.toggle('active'));
 
 // ANIMATING THE LOGO
 let logo = document.querySelector(".logo");
