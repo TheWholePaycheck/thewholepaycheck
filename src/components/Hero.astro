@@ -5,8 +5,13 @@
     </h1>
 
     <div class="cta">
-        <button class="secondary-font" title="see our work!">See Works</button>
-        <button class="secondary-font" title="hit us up">Contact Us</button>
+        <a href="/works">
+            <button class="secondary-font" title="see our work!">See Works</button>
+        </a>
+
+        <a href="/contact">
+            <button class="secondary-font" title="hit us up">Contact Us</button>
+        </a>
     </div>
 </section>
 
@@ -54,6 +59,19 @@
 
                 background-color: $accent-color;
                 color: white;
+            }
+        }
+    }
+
+
+    // MOBILE VERSION
+    @media screen and (max-width: 400px){
+        .cta {
+            flex-direction: column;
+            max-width: 300px;
+            width: 100%;
+            button {
+                width: 100% !important;
             }
         }
     }
